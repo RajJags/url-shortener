@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trimly | URL Shortener</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero-layout">
+        <article class="hero-card hero-copy-card">
+          <div class="hero-copy">
+            <p class="eyebrow">Simple URL shortener</p>
+            <h1>Short links that feel fast, clean, and easy on the eyes.</h1>
+            <p class="lede">
+              Create memorable links, share them instantly, and keep lightweight analytics in one calm workspace.
+            </p>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="highlight">
+              <span class="highlight-label">Custom aliases</span>
+              <strong>Share readable links people can trust</strong>
+            </div>
+            <div class="highlight">
+              <span class="highlight-label">Flexible storage</span>
+              <strong>Use local files or Postgres when you deploy</strong>
+            </div>
+            <div class="highlight">
+              <span class="highlight-label">Simple controls</span>
+              <strong>Copy, refresh, and delete without leaving the page</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-card create-card">
+          <div class="panel-header compact-header">
+            <div>
+              <p class="eyebrow">Create link</p>
+              <h2>Make a new short URL</h2>
+            </div>
+          </div>
+
+          <form id="create-form" class="create-form">
+            <label class="field field-wide">
+              <span>Destination URL</span>
+              <input id="url" name="url" type="url" placeholder="https://example.com/very/long/path" required />
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span>Custom alias</span>
+                <input id="customAlias" name="customAlias" type="text" placeholder="launch" />
+              </label>
+
+              <label class="field">
+                <span>Expiration</span>
+                <input id="expiresAt" name="expiresAt" type="datetime-local" />
+              </label>
+            </div>
+
+            <button id="submit-button" class="primary-button" type="submit">Create short URL</button>
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Recent links</p>
+              <h2>Your shortened URLs</h2>
+            </div>
+            <button id="refresh-button" class="ghost-button" type="button">Refresh</button>
+          </div>
+          <div id="url-list" class="url-list"></div>
+        </article>
+
+        <article class="panel info-panel">
+          <p class="eyebrow">What this app includes</p>
+          <ul class="feature-list">
+            <li>Create short links with generated or custom codes</li>
+            <li>Track clicks, last access time, and recent visits</li>
+            <li>Delete links and refresh the list instantly</li>
+            <li>Works locally or with Postgres for deployment</li>
+          </ul>
+          <div id="service-meta" class="service-meta"></div>
+        </article>
+      </section>
+    </main>
+
+    <template id="url-item-template">
+      <article class="url-item">
+        <div class="url-item-copy">
+          <a class="short-link" target="_blank" rel="noreferrer"></a>
+          <p class="original-link"></p>
+          <p class="meta-line"></p>
+        </div>
+        <div class="url-item-actions">
+          <button class="ghost-button copy-button" type="button">Copy</button>
+          <button class="ghost-button danger-button delete-button" type="button">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
