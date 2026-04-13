@@ -153,6 +153,23 @@ docker run -p 3000:3000 --env-file .env url-shortener
 
 That is the lowest-complexity deployable version of this project.
 
+### Render Blueprint
+
+This repo now includes [render.yaml](C:/Users/rajag/OneDrive/Desktop/url-shortener/render.yaml:1), so you can deploy with Render Blueprint:
+
+1. Push the latest repo changes to GitHub
+2. In Render, choose `New +` -> `Blueprint`
+3. Select this repository
+4. Review the generated web service and Postgres database
+5. Set `BASE_URL` to your final Render service URL after the first deploy
+6. Approve the deploy
+
+The blueprint provisions:
+
+- one Docker-based web service
+- one Postgres database
+- the environment variables needed for the simple deployable setup
+
 ## Future Upgrades
 
 - Add QR code generation
